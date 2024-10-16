@@ -25,7 +25,6 @@ public class Main {
 
             while (lineArea != null){
                 areasStr = lineArea.split(";");
-                //System.out.println(areasStr[0] + " " + areasStr[1]);
                 ZooArea birdArea = new ZooArea(areasStr[0], Integer.parseInt(areasStr[1]));
                 myZooArea.add(birdArea);
                 lineArea = readerZooArea.readLine();
@@ -35,9 +34,6 @@ public class Main {
         catch (IOException e) {
             System.out.println("An error ocurred reading the file: " + e.getMessage());
         }
-        /*for(ZooArea area: myZooArea){
-            System.out.println(area.getName() + " " + area.getMaxCapacity());
-        }*/
 
         /*Animals*/
         try {
@@ -48,7 +44,6 @@ public class Main {
 
             while (lineAnimal != null){
                 animalsStr = lineAnimal.split(";");
-                //System.out.println(animalsStr[0] + " " + animalsStr[1] + " " + animalsStr[2] + " " + animalsStr[3]);
                 if(animalsStr[0].equals("Bird")){
                     Bird bird = new Bird(animalsStr[0], animalsStr[1], animalsStr[2], Integer.parseInt(animalsStr[3]));
                     myBirds.add(bird);
@@ -67,7 +62,6 @@ public class Main {
         for(ZooArea area: myZooArea){
             if(area.getName().contains("Bird")){
                 for(Bird bird: myBirds){
-                    //System.out.println(bird.getName() + " " + bird.getBreed() + " " + bird.getSpecie() + " " + bird.getBirthYear());
                     if(!area.addAnimals(bird)){
                         break;
                     };
@@ -78,30 +72,11 @@ public class Main {
                         break;
                     };
                     area.addAnimals(bear);
-                    //System.out.println(bear.getName() + " " + bear.getBreed() + " " + bear.getSpecie() + " " + bear.getBirthYear());
                 }
             };
             zoo.addZooArea(area);
         };
         zoo.printZooStatus();
-
-        /*ZooArea birdArea = new ZooArea("Bird Area", 2);
-        ZooArea bearArea = new ZooArea("Bear Area",1);
-        Bird bird_1 =  new Bird("Bird", "Bridled Titmouse", "Lulu", 2015);
-        Bird bird_2 =  new Bird("Bird", "Budgerigars", "Lili", 2010);
-        birdArea.addAnimals(bird_1);
-        birdArea.addAnimals(bird_2);
-        Bear bear_1 = new Bear("Bear","Polar","Yogi",2023);
-
-        Bear bear_2 = new Bear("Bear","Grizzly","Bubu",2023);
-        bearArea.addAnimals(bear_1);
-        // this should fail because max capacity is reached.
-        bearArea.addAnimals(bear_2);
-        Zoo zoo = new Zoo("Jorge and Karen's Zoo");
-        zoo.addZooArea(birdArea);
-        zoo.addZooArea(bearArea);
-
-        zoo.printZooStatus();*/
 
     }
 }
